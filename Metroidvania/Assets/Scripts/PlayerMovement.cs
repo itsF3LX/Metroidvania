@@ -39,26 +39,18 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey("s")){
                 PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
                 Collider2D collider = platform.GetComponent<Collider2D>();
-                effector.enabled = !effector.enabled;
-                collider.enabled = !collider.enabled;
-            } else if (Input.GetKeyUp("s")){
-                PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
-                Collider2D collider = platform.GetComponent<Collider2D>();
-                effector.enabled = !effector.enabled;
-                collider.enabled = !collider.enabled;
+                effector.enabled = false;
+                collider.enabled = false;
             } else {
                 jump = true;
             }
         }
         if (Input.GetKeyUp("s")){
-                PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
-                Collider2D collider = platform.GetComponent<Collider2D>();
-                effector.enabled = !effector.enabled;
-                collider.enabled = !collider.enabled;
-        }
-        // if(Input.GetKeyUp("s")){
-        //     effector.enabled = !effector.enabled;
-        // }
+            PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
+            Collider2D collider = platform.GetComponent<Collider2D>();
+            effector.enabled = true;
+            collider.enabled = true;
+        } 
         if(Input.GetButtonDown("Crouch")){
             crouch = true;
         } else if (Input.GetButtonUp("Crouch")){
