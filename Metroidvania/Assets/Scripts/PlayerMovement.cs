@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration;
     public float dashTimer;
     private bool canDash = true;
+    bool changePlatformState = false;
     public GameObject platform;
     Rigidbody2D body;   
     enum DashDirection
@@ -38,19 +39,19 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump")){
             if (Input.GetKey("s")){
                 PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
-                Collider2D collider = platform.GetComponent<Collider2D>();
-                effector.enabled = false;
-                collider.enabled = false;
+                effector.surfaceArc = 0;
             } else {
                 jump = true;
             }
         }
         if (Input.GetKeyUp("s")){
-            PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
-            Collider2D collider = platform.GetComponent<Collider2D>();
-            effector.enabled = true;
-            collider.enabled = true;
+            changePlatformState = true;
         } 
+        if (!this.GetComponent<Collider2D>().Distance(platform.GetComponent<Collider2D>()).isOverlapped && changePlatformState){
+            PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
+            effector.surfaceArc = 180;
+            changePlatformState = false;
+        }
         if(Input.GetButtonDown("Crouch")){
             crouch = true;
         } else if (Input.GetButtonUp("Crouch")){
