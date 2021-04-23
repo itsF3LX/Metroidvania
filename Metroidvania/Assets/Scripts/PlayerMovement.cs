@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration;
     public float dashTimer;
     private bool canDash = true;
+    public GameObject platform;
     Rigidbody2D body;   
     enum DashDirection
     {
@@ -35,8 +36,29 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = body.velocity;
         // body.velocity = Vector2.zero;
         if(Input.GetButtonDown("Jump")){
-            jump = true;
+            if (Input.GetKey("s")){
+                PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
+                Collider2D collider = platform.GetComponent<Collider2D>();
+                effector.enabled = !effector.enabled;
+                collider.enabled = !collider.enabled;
+            } else if (Input.GetKeyUp("s")){
+                PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
+                Collider2D collider = platform.GetComponent<Collider2D>();
+                effector.enabled = !effector.enabled;
+                collider.enabled = !collider.enabled;
+            } else {
+                jump = true;
+            }
         }
+        if (Input.GetKeyUp("s")){
+                PlatformEffector2D effector = platform.GetComponent<PlatformEffector2D>();
+                Collider2D collider = platform.GetComponent<Collider2D>();
+                effector.enabled = !effector.enabled;
+                collider.enabled = !collider.enabled;
+        }
+        // if(Input.GetKeyUp("s")){
+        //     effector.enabled = !effector.enabled;
+        // }
         if(Input.GetButtonDown("Crouch")){
             crouch = true;
         } else if (Input.GetButtonUp("Crouch")){
