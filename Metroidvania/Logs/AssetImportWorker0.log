@@ -1,0 +1,269 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.4f1 (0abb6314276a) revision 703331'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.928; Version 2009; 64bit' Language: 'de' Physical Memory: 8109 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.4f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/GIT/Metroidvania/Metroidvania
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+54467
+Successfully changed project path to: C:/GIT/Metroidvania/Metroidvania
+C:/GIT/Metroidvania/Metroidvania
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 42.51 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.4f1 (0abb6314276a)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/GIT/Metroidvania/Metroidvania/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1050 (ID=0x1c8d)
+    Vendor:   
+    VRAM:     1979 MB
+    Driver:   27.21.14.5671
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56064
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005113 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 70.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  4.960 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.003420 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 52.56 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.581 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1811 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.0 MB.
+System memory in use after: 84.9 MB.
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 2254.
+Total: 3.061400 ms (FindLiveObjects: 0.430800 ms CreateObjectMapping: 0.174800 ms MarkObjects: 2.282100 ms  DeleteObjects: 0.172100 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/boxt.png
+  artifactKey: Guid(07ab83d56307f604992542a9bac7877f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/boxt.png using Guid(07ab83d56307f604992542a9bac7877f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd84244d0125cab69e94d8f41b18fb3b0') in 0.209632 seconds
+  Import took 0.215971 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000882 seconds.
+  path: Assets/full_wood.png
+  artifactKey: Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/full_wood.png using Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc9dd5502f8fa42bb04a5a888399a60f') in 0.015792 seconds
+  Import took 0.020817 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000711 seconds.
+  path: Assets/ground_wood.png
+  artifactKey: Guid(0b96c0575f35f074887b8eec80e47045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ground_wood.png using Guid(0b96c0575f35f074887b8eec80e47045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bd037a5879270933bd1fff5fa9a2e1e') in 0.018211 seconds
+  Import took 0.028551 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/platform_wood.png
+  artifactKey: Guid(2ad209d891be51542a6634e9fa573c2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/platform_wood.png using Guid(2ad209d891be51542a6634e9fa573c2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b63ea34b34ee5988b31ca0017a0172e') in 0.019471 seconds
+  Import took 0.023450 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.761297 seconds.
+  path: Assets/Palette/TestPalette.prefab
+  artifactKey: Guid(1ea159aa90411bf45b02f622b0e76103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palette/TestPalette.prefab using Guid(1ea159aa90411bf45b02f622b0e76103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1603e6c05bc05892e71ddf0391cb23f7') in 0.029737 seconds
+  Import took 0.034519 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.939220 seconds.
+  path: Assets/full_wood.png
+  artifactKey: Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/full_wood.png using Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec55e4345dca195fbe49f498aa00f1ba') in 0.015644 seconds
+  Import took 0.019471 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.004001 seconds.
+  path: Assets/full_wood.png
+  artifactKey: Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/full_wood.png using Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec55e4345dca195fbe49f498aa00f1ba') in 0.013289 seconds
+  Import took 0.017721 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.231808 seconds.
+  path: Assets/full_wood.png
+  artifactKey: Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/full_wood.png using Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73b44d04d021b50cd9d1de5eeeac9376') in 0.007474 seconds
+  Import took 0.011173 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011246 seconds.
+  path: Assets/full_wood.png
+  artifactKey: Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/full_wood.png using Guid(bf4488282f8a1cc4fb2ddcd936d402e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73b44d04d021b50cd9d1de5eeeac9376') in 0.010382 seconds
+  Import took 0.015468 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.703513 seconds.
+  path: Assets/ground_wood.png
+  artifactKey: Guid(0b96c0575f35f074887b8eec80e47045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ground_wood.png using Guid(0b96c0575f35f074887b8eec80e47045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '535bbb199d216dea1e6de9bbe624a7a1') in 0.015650 seconds
+  Import took 0.020661 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002466 seconds.
+  path: Assets/ground_wood.png
+  artifactKey: Guid(0b96c0575f35f074887b8eec80e47045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ground_wood.png using Guid(0b96c0575f35f074887b8eec80e47045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '535bbb199d216dea1e6de9bbe624a7a1') in 0.012736 seconds
+  Import took 0.016070 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.565142 seconds.
+  path: Assets/boxt.png
+  artifactKey: Guid(07ab83d56307f604992542a9bac7877f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/boxt.png using Guid(07ab83d56307f604992542a9bac7877f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ddc28974e739d5b68e1072f121422ca') in 0.015344 seconds
+  Import took 0.021089 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003578 seconds.
+  path: Assets/boxt.png
+  artifactKey: Guid(07ab83d56307f604992542a9bac7877f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/boxt.png using Guid(07ab83d56307f604992542a9bac7877f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ddc28974e739d5b68e1072f121422ca') in 0.009931 seconds
+  Import took 0.013885 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 70.722192 seconds.
+  path: Assets/platform_wood.png
+  artifactKey: Guid(2ad209d891be51542a6634e9fa573c2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/platform_wood.png using Guid(2ad209d891be51542a6634e9fa573c2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '265a7da4b850a3cf11b0a009b0d0a402') in 0.013563 seconds
+  Import took 0.017754 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009280 seconds.
+  path: Assets/platform_wood.png
+  artifactKey: Guid(2ad209d891be51542a6634e9fa573c2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/platform_wood.png using Guid(2ad209d891be51542a6634e9fa573c2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '265a7da4b850a3cf11b0a009b0d0a402') in 0.010209 seconds
+  Import took 0.013491 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.047088 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.178 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1806 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.0 MB.
+System memory in use after: 88.0 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2264.
+Total: 3.303500 ms (FindLiveObjects: 0.541500 ms CreateObjectMapping: 0.271600 ms MarkObjects: 2.332500 ms  DeleteObjects: 0.155900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 152.047874 seconds.
+  path: Assets/Tiles/boxt.asset
+  artifactKey: Guid(bb14485f269e24f4092db0e3b7ac6733) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/boxt.asset using Guid(bb14485f269e24f4092db0e3b7ac6733) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '814c0a6c1d90d9fad916afd181043934') in 0.054596 seconds
+  Import took 0.060325 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000354 seconds.
+  path: Assets/Tiles/ground_wood.asset
+  artifactKey: Guid(01055408dff8f364499b26380c3f2bce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/ground_wood.asset using Guid(01055408dff8f364499b26380c3f2bce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '877b051cbc9349b04b6fd550f3a77141') in 0.013053 seconds
+  Import took 0.017627 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000329 seconds.
+  path: Assets/Tiles/full_wood.asset
+  artifactKey: Guid(f9ff16b837a89a04e851e3caec7d8708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/full_wood.asset using Guid(f9ff16b837a89a04e851e3caec7d8708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b592fa40a6b8470b4ea5bde16c8d256') in 0.016706 seconds
+  Import took 0.021008 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000368 seconds.
+  path: Assets/Tiles/platform_wood.asset
+  artifactKey: Guid(af6e82ab35fb6e84b871141180006ef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiles/platform_wood.asset using Guid(af6e82ab35fb6e84b871141180006ef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e53ac3f14c2487e46c94a374710ab3e') in 0.017001 seconds
+  Import took 0.020740 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.541616 seconds.
+  path: Assets/Palette/TestPalette.prefab
+  artifactKey: Guid(1ea159aa90411bf45b02f622b0e76103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Palette/TestPalette.prefab using Guid(1ea159aa90411bf45b02f622b0e76103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ca2d1d82c68dcb37517037f3a690cd7') in 0.012763 seconds
+  Import took 0.042930 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000925 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.772 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1806 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.1 MB.
+System memory in use after: 88.1 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2270.
+Total: 2.732800 ms (FindLiveObjects: 0.473900 ms CreateObjectMapping: 0.134600 ms MarkObjects: 1.940500 ms  DeleteObjects: 0.182400 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
