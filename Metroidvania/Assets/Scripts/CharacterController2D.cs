@@ -20,6 +20,10 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 	private bool canJump = true;
+	public Transform attackHitbox;
+	public float attackRange = 0.5f;
+	public LayerMask enemyLayer;
+	public int damage = 25;
 
 	[Header("Events")]
 	[Space]
@@ -42,7 +46,6 @@ public class CharacterController2D : MonoBehaviour
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
 	}
-
 	private void FixedUpdate()
 	{
 		bool wasGrounded = m_Grounded;
@@ -64,7 +67,7 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	public void Move(float move, bool crouch, bool jump)
+	public void Move(float move, bool crouch, bool jump, bool attacking)
 	{
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
@@ -141,6 +144,9 @@ public class CharacterController2D : MonoBehaviour
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 			}
 		}
+		if (attacking){
+			attack();
+		}
 	}
 
 
@@ -157,5 +163,22 @@ public class CharacterController2D : MonoBehaviour
 
 	public bool GetM_Grounded(){
 		return m_Grounded;
+	}
+
+	public void attack(){
+		//play animation
+		//detect enemys in range
+		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.position, attackRange,enemyLayer);
+		//apply damage
+		foreach(Collider2D enemy in hitEnemies){
+			enemy.GetComponent<EnemyDamage>().takeDamage(damage);
+		}
+	}
+
+	void OnDrawGizmosSelected(){
+		if (attackHitbox == null){
+			return;
+		}
+		Gizmos.DrawWireSphere(attackHitbox.position,attackRange);
 	}
 }

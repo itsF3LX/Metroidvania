@@ -16,7 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     bool changePlatformState = false;
     public GameObject platform;
-    Rigidbody2D body;   
+    bool attacking = false;
+    Rigidbody2D body; 
+    public float attackRate = 1f;
+	float nextAttackTime = 0f;  
+    public Transform interactHitbox;
+	public float interactRange = 0.5f;
+	public LayerMask interactableLayer;
     enum DashDirection
     {
         Left,
@@ -68,11 +74,24 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        if (Time.time >= nextAttackTime){
+            if (Input.GetMouseButtonDown(0)){
+                attacking = true;
+                nextAttackTime = Time.time + 1f/attackRate;
+            }
+        }
+        if (Input.GetButtonDown("Interact")){
+            Collider2D[] interact = Physics2D.OverlapCircleAll(interactHitbox.position, interactRange,interactableLayer);
+            foreach(Collider2D inter in interact){
+			    inter.GetComponent<Interactable>().disappear();
+		    }
+        }
     }
 
     void FixedUpdate(){
         //Movement
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch,jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch,jump, attacking);
+        attacking = false;
         if (dashDirection != DashDirection.NoDirection) {
             if (dashTimer >= dashDuration) {
                 dashDirection = DashDirection.NoDirection;
