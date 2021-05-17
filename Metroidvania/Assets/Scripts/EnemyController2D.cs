@@ -25,6 +25,9 @@ public class EnemyController2D : MonoBehaviour
 	private bool goingRight = true;
 	private bool wasCollider = true;
 	private float radious = 0.3437f;
+	public Animator animator;
+	private float wait = 1f;
+	private Vector2 restart;
 
 	[Header("Events")]
 	[Space]
@@ -63,17 +66,13 @@ public class EnemyController2D : MonoBehaviour
 			if (collidersFrontWall.Length > 0) {
 				if (wasCollider){
 					if (goingRight){
-						turnAround = -1f;
-						goingRight = false;
-						m_Rigidbody2D.velocity = new Vector2 (0, m_Rigidbody2D.velocity.y);
-						Debug.Log("left");
-						wasCollider = false;
+						animator.SetFloat("speed", 0);
+						wait = 0;
+						Invoke("waitingL", 1);
 					} else {
-						turnAround = 1f;
-						goingRight = true;
-						m_Rigidbody2D.velocity = new Vector2 (0, m_Rigidbody2D.velocity.y);
-						Debug.Log("right");
-						wasCollider = false;
+						animator.SetFloat("speed", 0);
+						wait = 0;
+						Invoke("waiting", 1);
 					}
 				}
 			} else {
@@ -93,15 +92,13 @@ public class EnemyController2D : MonoBehaviour
 				}
 				if (collidersFront.Length == 0 && wasCollider){
 					if (goingRight){
-						turnAround = -1f;
-						goingRight = false;
-						m_Rigidbody2D.velocity = new Vector2 (0, m_Rigidbody2D.velocity.y);
-						wasCollider = false;
+						wait = 0;
+						Invoke("waitingL", 1);
+						animator.SetFloat("speed", 0);
 					} else {
-						turnAround = 1f;
-						goingRight = true;
-						m_Rigidbody2D.velocity = new Vector2 (0, m_Rigidbody2D.velocity.y);
-						wasCollider = false;
+						wait = 0;
+						Invoke("waiting", 1);
+						animator.SetFloat("speed", 0);
 					}
 				}
 			}
@@ -109,34 +106,40 @@ public class EnemyController2D : MonoBehaviour
 	}
 
 
-	public void Move(float move, bool attacking)
+	public void Move(float move, bool attacking, bool canmove)
 	{
 		// If crouching, check to see if the character can stand up
 		//only control the player if grounded or airControl is turned on
-		if (m_Grounded || m_AirControl)
-		{
-
-			// Move the character by finding the target velocity
-			Vector3 targetVelocity = new Vector2(move * 4f * turnAround, m_Rigidbody2D.velocity.y);
-			// And then smoothing it out and applying it to the character
-			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-
-			// If the input is moving the player right and the player is facing left...
-			if (turnAround > 0 && !m_FacingRight)
+		if (canmove){
+			if (m_Grounded || m_AirControl)
 			{
-				// ... flip the player.
-				Flip();
+				animator.SetFloat("speed", move);
+				// Move the character by finding the target velocity
+				Vector3 targetVelocity = new Vector2(move * 4f * turnAround * wait, m_Rigidbody2D.velocity.y);
+				// And then smoothing it out and applying it to the character
+				m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+
+				// If the input is moving the player right and the player is facing left...
+				if (turnAround > 0 && !m_FacingRight)
+				{
+					// ... flip the player.
+					Flip();
+				}
+				// Otherwise if the input is moving the player left and the player is facing right...
+				else if (turnAround < 0 && m_FacingRight)
+				{
+					// ... flip the player.
+					Flip();
+				}
+			} else {
+				animator.SetFloat("speed", 0);
 			}
-			// Otherwise if the input is moving the player left and the player is facing right...
-			else if (turnAround < 0 && m_FacingRight)
-			{
-				// ... flip the player.
-				Flip();
-			}
-		}
-		// If the player should jump...
-		if (attacking){
+		} else if (attacking) {
+			m_Rigidbody2D.velocity = Vector3.zero;
+			animator.SetFloat("speed", 0);
 			attack();
+		} else {
+			animator.SetFloat("speed", 0);
 		}
 	}
 
@@ -158,11 +161,13 @@ public class EnemyController2D : MonoBehaviour
 
 	public void attack(){
 		//play animation
+
 		//detect enemys in range
 		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.position, attackRange,enemyLayer);
 		//apply damage
+		animator.SetTrigger("Attack");
 		foreach(Collider2D enemy in hitEnemies){
-			enemy.GetComponent<EnemyDamage>().takeDamage(damage);
+			enemy.GetComponent<PlayerHealth>().takeDamage(damage);
 		}
 	}
 
@@ -171,6 +176,20 @@ public class EnemyController2D : MonoBehaviour
 			return;
 		}
 		Gizmos.DrawWireSphere(attackHitbox.position,attackRange);
+	}
+
+	public void waiting(){
+		turnAround = 1f;
+		goingRight = true;
+		wasCollider = false;
+		wait = 1;
+	}
+
+	public void waitingL(){
+		turnAround = -1f;
+		goingRight = false;
+		wasCollider = false;
+		wait = 1;
 	}
 }
 

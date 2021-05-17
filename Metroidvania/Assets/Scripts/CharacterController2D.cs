@@ -24,6 +24,7 @@ public class CharacterController2D : MonoBehaviour
 	public float attackRange = 0.5f;
 	public LayerMask enemyLayer;
 	public int damage = 25;
+	public Animator animator;
 
 	[Header("Events")]
 	[Space]
@@ -146,7 +147,7 @@ public class CharacterController2D : MonoBehaviour
 		}
 		if (attacking){
 			attack();
-		}
+		} 
 	}
 
 
@@ -170,6 +171,7 @@ public class CharacterController2D : MonoBehaviour
 		//detect enemys in range
 		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.position, attackRange,enemyLayer);
 		//apply damage
+		animator.SetTrigger("Attack");
 		foreach(Collider2D enemy in hitEnemies){
 			enemy.GetComponent<EnemyDamage>().takeDamage(damage);
 		}

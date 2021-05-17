@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform interactHitbox;
 	public float interactRange = 0.5f;
 	public LayerMask interactableLayer;
+    public Animator animator;
     enum DashDirection
     {
         Left,
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizontalMove =  Input.GetAxisRaw("Horizontal") * runSpeed;
+        animator.SetFloat("speed", Mathf.Abs(horizontalMove));
         body.velocity = body.velocity;
         // body.velocity = Vector2.zero;
         if(Input.GetButtonDown("Jump")){
