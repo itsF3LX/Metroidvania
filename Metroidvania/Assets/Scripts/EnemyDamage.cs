@@ -20,6 +20,7 @@ public class EnemyDamage : MonoBehaviour
 
     public void takeDamage(int damage){
         currentHealth -= damage;
+        GetComponent<EnemyController2D>().lookingAtPlayer();
         if (currentHealth <= 0){
             die();
         }

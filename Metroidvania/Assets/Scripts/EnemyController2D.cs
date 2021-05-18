@@ -28,6 +28,7 @@ public class EnemyController2D : MonoBehaviour
 	public Animator animator;
 	private float wait = 1f;
 	private Vector2 restart;
+	private bool shouldStagger = false;
 
 	[Header("Events")]
 	[Space]
@@ -66,11 +67,9 @@ public class EnemyController2D : MonoBehaviour
 			if (collidersFrontWall.Length > 0) {
 				if (wasCollider){
 					if (goingRight){
-						animator.SetFloat("speed", 0);
 						wait = 0;
 						Invoke("waitingL", 1);
 					} else {
-						animator.SetFloat("speed", 0);
 						wait = 0;
 						Invoke("waiting", 1);
 					}
@@ -94,14 +93,23 @@ public class EnemyController2D : MonoBehaviour
 					if (goingRight){
 						wait = 0;
 						Invoke("waitingL", 1);
-						animator.SetFloat("speed", 0);
 					} else {
 						wait = 0;
 						Invoke("waiting", 1);
-						animator.SetFloat("speed", 0);
 					}
 				}
 			}
+		}
+
+		if (shouldStagger) {
+			if(goingRight){
+				wait = 0;
+				Invoke("freezeL", 0.7f);
+			} else {
+				wait = 0;
+				Invoke("freeze", 0.7f);
+			}
+			shouldStagger = false;
 		}
 	}
 
@@ -113,7 +121,8 @@ public class EnemyController2D : MonoBehaviour
 		if (canmove){
 			if (m_Grounded || m_AirControl)
 			{
-				animator.SetFloat("speed", move);
+				Debug.Log(wait);
+				animator.SetFloat("speed", move * 4f * wait);
 				// Move the character by finding the target velocity
 				Vector3 targetVelocity = new Vector2(move * 4f * turnAround * wait, m_Rigidbody2D.velocity.y);
 				// And then smoothing it out and applying it to the character
@@ -135,7 +144,7 @@ public class EnemyController2D : MonoBehaviour
 				animator.SetFloat("speed", 0);
 			}
 		} else if (attacking) {
-			m_Rigidbody2D.velocity = Vector3.zero;
+			m_Rigidbody2D.velocity = new Vector3(0, m_Rigidbody2D.velocity.y, 0);
 			animator.SetFloat("speed", 0);
 			attack();
 		} else {
@@ -191,5 +200,27 @@ public class EnemyController2D : MonoBehaviour
 		wasCollider = false;
 		wait = 1;
 	}
+
+	public void lookingAtPlayer(){
+		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.position, attackRange,enemyLayer);
+		if (hitEnemies == null || hitEnemies.Length == 0){
+			shouldStagger = true;
+		}
+	}
+
+	public void freeze(){
+		turnAround = 1f;
+		goingRight = true;
+		wasCollider = false;
+		wait = 1;
+	}
+
+	public void freezeL(){
+		turnAround = -1f;
+		goingRight = false;
+		wasCollider = false;
+		wait = 1;
+	}
+	
 }
 
