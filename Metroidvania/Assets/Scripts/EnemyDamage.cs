@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamage : MonoBehaviour
+public class EnemyDamage : GenericDamage
 {
-    public int maxHealth = 50;
-    int currentHealth;
+    public float maxHealth = 50;
+    protected float currentHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +18,8 @@ public class EnemyDamage : MonoBehaviour
         
     }
 
-    public void takeDamage(int damage){
-        currentHealth -= damage;
+    public override void takeDamage(int damage){
+        currentHealth -= (float)damage;
         GetComponent<EnemyController2D>().lookingAtPlayer();
         if (currentHealth <= 0){
             die();

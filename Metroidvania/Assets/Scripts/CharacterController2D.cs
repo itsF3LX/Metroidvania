@@ -173,7 +173,7 @@ public class CharacterController2D : MonoBehaviour
 		//apply damage
 		animator.SetTrigger("Attack");
 		foreach(Collider2D enemy in hitEnemies){
-			enemy.GetComponent<EnemyDamage>().takeDamage(damage);
+			enemy.GetComponent<GenericDamage>().takeDamage(damage);
 		}
 	}
 

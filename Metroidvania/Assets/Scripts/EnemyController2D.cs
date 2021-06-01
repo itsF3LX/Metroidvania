@@ -4,31 +4,31 @@ using static System.Math;
 
 public class EnemyController2D : MonoBehaviour
 {
-	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
-	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
-	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
-	[SerializeField] private Transform m_GroundCheck;
-	[SerializeField] private Transform m_WallCheckFront;
-	[SerializeField] private Transform m_GroundCheckFront;							// A position marking where to check if the player is grounded.
+	[Range(0, .3f)] [SerializeField] protected float m_MovementSmoothing = .05f;	// How much to smooth out the movement
+	[SerializeField] protected bool m_AirControl = false;							// Whether or not a player can steer while jumping;
+	[SerializeField] protected LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
+	[SerializeField] protected Transform m_GroundCheck;
+	[SerializeField] protected Transform m_WallCheckFront;
+	[SerializeField] protected Transform m_GroundCheckFront;							// A position marking where to check if the player is grounded.
 
-	const float k_GroundedRadius = .1f; // Radius of the overlap circle to determine if grounded
-	private bool m_Grounded = false;            // Whether or not the player is grounded.
-	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
-	private Rigidbody2D m_Rigidbody2D;
-	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-	private Vector3 m_Velocity = Vector3.zero;
+	protected float k_GroundedRadius = .1f; // Radius of the overlap circle to determine if grounded
+	protected bool m_Grounded = false;            // Whether or not the player is grounded.
+	protected float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
+	protected Rigidbody2D m_Rigidbody2D;
+	protected bool m_FacingRight = true;  // For determining which way the player is currently facing.
+	protected Vector3 m_Velocity = Vector3.zero;
 	public Transform attackHitbox;
 	public float attackRange = 0.5f;
 	public LayerMask enemyLayer;
 	public int damage = 25;
-	private float turnAround = 1f;
-	private bool goingRight = true;
-	private bool wasCollider = true;
-	private float radious = 0.3437f;
+	protected float turnAround = 1f;
+	protected bool goingRight = true;
+	protected bool wasCollider = true;
+	protected float radious = 0.3437f;
 	public Animator animator;
-	private float wait = 1f;
-	private Vector2 restart;
-	private bool shouldStagger = false;
+	protected float wait = 1f;
+	protected Vector2 restart;
+	protected bool shouldStagger = false;
 
 	[Header("Events")]
 	[Space]
@@ -38,14 +38,14 @@ public class EnemyController2D : MonoBehaviour
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
 
-	private void Awake()
+	protected void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
 	}
-	private void FixedUpdate()
+	protected void FixedUpdate()
 	{
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
@@ -121,7 +121,6 @@ public class EnemyController2D : MonoBehaviour
 		if (canmove){
 			if (m_Grounded || m_AirControl)
 			{
-				Debug.Log(wait);
 				animator.SetFloat("speed", move * 4f * wait);
 				// Move the character by finding the target velocity
 				Vector3 targetVelocity = new Vector2(move * 4f * turnAround * wait, m_Rigidbody2D.velocity.y);
@@ -153,7 +152,7 @@ public class EnemyController2D : MonoBehaviour
 	}
 
 
-	private void Flip()
+	public void Flip()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;

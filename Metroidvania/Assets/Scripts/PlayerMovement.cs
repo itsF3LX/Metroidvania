@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public float attackRate = 1f;
 	float nextAttackTime = 0f;  
     public Transform interactHitbox;
-	public float interactRange = 0.5f;
+	public float interactRange = 2f;
 	public LayerMask interactableLayer;
     public Animator animator;
     enum DashDirection
@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Interact")){
             Collider2D[] interact = Physics2D.OverlapCircleAll(interactHitbox.position, interactRange,interactableLayer);
             foreach(Collider2D inter in interact){
-			    inter.GetComponent<Interactable>().disappear();
+			    inter.GetComponent<Interactable>().activate();
 		    }
         }
     }

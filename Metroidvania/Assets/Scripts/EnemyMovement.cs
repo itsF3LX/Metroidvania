@@ -7,14 +7,14 @@ public class EnemyMovement : MonoBehaviour
 
     public EnemyController2D controller;
     public float runSpeed = 40f;
-    bool attacking = false;
-    Rigidbody2D body; 
+    protected bool attacking = false;
+    protected Rigidbody2D body; 
     public float attackRate = 1f;
-	float nextAttackTime = 0f;  
+	protected float nextAttackTime = 0f;  
     public Transform attackHitbox;
 	public float attackRange = 0.5f;
-    [SerializeField] private LayerMask whatIsPlayer;
-    bool canmove = true;
+    [SerializeField] protected LayerMask whatIsPlayer;
+    protected bool canmove = true;
     //Start is called before the first frame update
     void Start()
     {
@@ -33,7 +33,6 @@ public class EnemyMovement : MonoBehaviour
 				    attacking = true;
                     nextAttackTime = Time.time + 1f/attackRate;
                     canmove = false;
-                    Debug.Log("Hit!");
 			    }
 		    }
         }

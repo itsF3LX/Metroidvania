@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +16,8 @@ public class Interactable : MonoBehaviour
     {
         
     }
-    public void disappear(){
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
-        this.enabled = false;
+    public void activate(){
+        animator.SetTrigger("Flip");
+        Debug.Log("Fliped");
     }
 }
