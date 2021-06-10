@@ -4,7 +4,7 @@ using static System.Math;
 
 public class CharacterController2D : MonoBehaviour
 {
-	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
+	[SerializeField] private float m_JumpForce = 40000f;							// Amount of force added when the player jumps.
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
@@ -137,13 +137,25 @@ public class CharacterController2D : MonoBehaviour
 				// Add a vertical force to the player.
 				m_Grounded = false;
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				animator.SetBool("jump", true);
 			} else if (canJump){
 				canJump = false;
 				Vector2 a = m_Rigidbody2D.velocity;
 				a.y = 0f ;
 				m_Rigidbody2D.velocity = a;
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				animator.SetBool("jump", true);
 			}
+		}
+
+		if(m_Rigidbody2D.velocity.y < -1){
+			animator.SetBool("fall", true);
+			animator.SetBool("jump", false);
+			Debug.Log(m_Rigidbody2D.velocity.y);
+		}
+		if(m_Rigidbody2D.velocity.y >= 0 && m_Grounded){
+			animator.SetBool("fall", false);
+			animator.SetBool("jump", false);
 		}
 		if (attacking){
 			attack();
