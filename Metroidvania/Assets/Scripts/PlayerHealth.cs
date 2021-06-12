@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health = 100;
+    public int health = 6;
+    public GameObject healthmanager;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +23,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void takeDamage(int damage){
         health -= damage;
+        healthmanager.GetComponent<Healthmanager>().Damage();
     }
 }

@@ -20,7 +20,7 @@ public class EnemyController2D : MonoBehaviour
 	public Transform attackHitbox;
 	public float attackRange = 0.5f;
 	public LayerMask enemyLayer;
-	public int damage = 25;
+	public int damage = 1;
 	protected float turnAround = 1f;
 	protected bool goingRight = true;
 	protected bool wasCollider = true;

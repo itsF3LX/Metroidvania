@@ -25,6 +25,8 @@ public class CharacterController2D : MonoBehaviour
 	public LayerMask enemyLayer;
 	public int damage = 25;
 	public Animator animator;
+	public bool jumping = false;
+	public bool falling = false;
 
 	[Header("Events")]
 	[Space]
@@ -68,7 +70,7 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	public void Move(float move, bool crouch, bool jump, bool attacking)
+	public void Move(float move, bool crouch, bool jump, bool attacking, bool dashing)
 	{
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
@@ -137,29 +139,33 @@ public class CharacterController2D : MonoBehaviour
 				// Add a vertical force to the player.
 				m_Grounded = false;
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				animator.SetBool("jump", true);
+				jumping = true;
 			} else if (canJump){
 				canJump = false;
 				Vector2 a = m_Rigidbody2D.velocity;
 				a.y = 0f ;
 				m_Rigidbody2D.velocity = a;
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				animator.SetBool("jump", true);
+				jumping = true;
 			}
 		}
 
 		if(m_Rigidbody2D.velocity.y < -1){
-			animator.SetBool("fall", true);
 			animator.SetBool("jump", false);
+			falling = true;
+			jumping = false;
 			Debug.Log(m_Rigidbody2D.velocity.y);
 		}
 		if(m_Rigidbody2D.velocity.y >= 0 && m_Grounded){
 			animator.SetBool("fall", false);
 			animator.SetBool("jump", false);
+			falling = false;
+			jumping = false;
 		}
 		if (attacking){
 			attack();
 		} 
+		animations(attacking, dashing, falling, jumping);
 	}
 
 
@@ -183,7 +189,7 @@ public class CharacterController2D : MonoBehaviour
 		//detect enemys in range
 		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.position, attackRange,enemyLayer);
 		//apply damage
-		animator.SetTrigger("Attack");
+
 		foreach(Collider2D enemy in hitEnemies){
 			enemy.GetComponent<GenericDamage>().takeDamage(damage);
 		}
@@ -194,5 +200,28 @@ public class CharacterController2D : MonoBehaviour
 			return;
 		}
 		Gizmos.DrawWireSphere(attackHitbox.position,attackRange);
+	}
+
+	public void animations(bool a, bool d, bool f, bool j){
+		// if(j){
+		// 	animator.SetBool("jump", true);
+		// } else if(f){
+		// 	animator.SetBool("fall", true);
+		// } else if(d){
+		// 	animator.SetTrigger("dash");
+		// } else if(a){
+		// 	animator.SetTrigger("Attack");
+		// }
+		if(a){
+			animator.SetTrigger("Attack");
+			return;
+		} else if(d){
+			animator.SetTrigger("dash");
+			return;
+		} else if(f){
+			animator.SetBool("fall", true);
+		} else if(j){
+			animator.SetBool("jump", true);
+		}
 	}
 }

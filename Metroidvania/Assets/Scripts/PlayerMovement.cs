@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 	public float interactRange = 2f;
 	public LayerMask interactableLayer;
     public Animator animator;
+    private bool dashing = false;
     enum DashDirection
     {
         Left,
@@ -69,9 +70,11 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Dash")){
                 if (Input.GetAxisRaw("Horizontal") > 0){
                     dashDirection = DashDirection.Right; 
+                    dashing = true;
                     canDash = false;
                 } else if (Input.GetAxisRaw("Horizontal") < 0){
                     dashDirection = DashDirection.Left;
+                    dashing = true;
                     canDash = false;
                 }
             }
@@ -92,8 +95,9 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
         //Movement
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch,jump, attacking);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch,jump, attacking, dashing);
         attacking = false;
+        dashing = false;
         if (dashDirection != DashDirection.NoDirection) {
             if (dashTimer >= dashDuration) {
                 dashDirection = DashDirection.NoDirection;
